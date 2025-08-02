@@ -29,31 +29,55 @@ This comprehensive documentation covers the advanced data table implementation u
 The transaction table system is built with a modular architecture that separates concerns and promotes reusability:
 
 ```mermaid
-graph TD
-    A[data-table.tsx] --> B[columns.tsx]
-    A --> C[data-table-header.tsx]
-    A --> D[bottom-bar.tsx]
-    A --> E[export-bar.tsx]
-    A --> F[empty-states.tsx]
-    A --> G[loading.tsx]
+flowchart TB
+    DataTable["data-table.tsx"]
+    Columns["columns.tsx"]
+    Header["data-table-header.tsx"]
+    BottomBar["bottom-bar.tsx"]
+    ExportBar["export-bar.tsx"]
+    EmptyStates["empty-states.tsx"]
+    Loading["loading.tsx"]
     
-    A --> H[Filter Hooks]
-    A --> I[Sort Hooks]
-    A --> J[Scroll Hooks]
-    A --> K[Sticky Column Hooks]
+    FilterHooks["Filter Hooks"]
+    SortHooks["Sort Hooks"]
+    ScrollHooks["Scroll Hooks"]
+    StickyHooks["Sticky Column Hooks"]
     
-    H --> L[localStorage Persistence]
-    H --> M[URL Synchronization]
+    LocalStorage["localStorage Persistence"]
+    URLSync["URL Synchronization"]
     
-    N[Zustand Store] --> A
-    N --> D
-    N --> E
+    Store["Zustand Store"]
     
-    O[External Libraries] --> A
-    O --> P[@tanstack/react-table]
-    O --> Q[nuqs]
-    O --> R[framer-motion]
-    O --> S[react-hotkeys-hook]
+    Libraries["External Libraries"]
+    TanStack["@tanstack/react-table"]
+    Nuqs["nuqs"]
+    Framer["framer-motion"]
+    Hotkeys["react-hotkeys-hook"]
+
+    DataTable --> Columns
+    DataTable --> Header
+    DataTable --> BottomBar
+    DataTable --> ExportBar
+    DataTable --> EmptyStates
+    DataTable --> Loading
+    
+    DataTable --> FilterHooks
+    DataTable --> SortHooks
+    DataTable --> ScrollHooks
+    DataTable --> StickyHooks
+    
+    FilterHooks --> LocalStorage
+    FilterHooks --> URLSync
+    
+    Store --> DataTable
+    Store --> BottomBar
+    Store --> ExportBar
+    
+    Libraries --> DataTable
+    Libraries --> TanStack
+    Libraries --> Nuqs
+    Libraries --> Framer
+    Libraries --> Hotkeys
 ```
 
 ## Quick Start
